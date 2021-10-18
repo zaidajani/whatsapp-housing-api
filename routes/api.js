@@ -1,4 +1,34 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
+const { Home } = require("../models/home");
+const cors = require('cors');
+
+router.use(cors());
+
+async function addHomes(name, state, city, zip, address, owner, phone) {
+  const home = new Home({
+    house: name,
+    state: state,
+    city: city,
+    zip: zip,
+    address: address,
+    owner: owner,
+    phone: phone
+  }); 
+  await home.save();
+
+  return home;
+}
+
+router.get("/", async (req, res) => {
+  const homes = await Home.find();
+  res.send(homes);
+});
+
+router.post('/home', async (req, res) => {
+  const { name, state, city, zip, address, owner, phone } = req.body;
+  const home = await addHomes(name, state, city, zip, address, owner, phone);
+  res.send(home); 
+});
 
 module.exports = router;
