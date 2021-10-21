@@ -31,4 +31,4 @@ router.post('/home', async (req, res) => {
   res.send(home); 
 });
 
-module.exports = router;
+module.exports = router; 
