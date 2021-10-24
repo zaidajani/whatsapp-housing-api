@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Home } = require("../models/home");
+const { Userquery } = require("../models/userquery.js");
 const cors = require('cors');
 
 router.use(cors());
@@ -20,6 +21,16 @@ async function addHomes(name, state, city, zip, address, owner, phone) {
   return home;
 }
 
+async function addquery(name, query, date) {
+  const userquery = new Userquery({
+    username: name,
+    query: query
+  });
+  await userquery.save();
+  return userquery;
+}
+  
+
 router.get("/", async (req, res) => {
   const homes = await Home.find();
   res.send(homes);
@@ -29,6 +40,12 @@ router.post('/home', async (req, res) => {
   const { name, state, city, zip, address, owner, phone } = req.body;
   const home = await addHomes(name, state, city, zip, address, owner, phone);
   res.send(home); 
+});
+
+router.post('/userquery', async (req, res) => {
+  const {username, query} = req.body;
+  const request = await addquery(username, query);
+  res.send(request);
 });
 
 module.exports = router; 
