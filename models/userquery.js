@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userquery = new mongoose.Schema({
+const schema = new mongoose.Schema({
   username: {
     type: String,
     required: true
@@ -15,5 +15,5 @@ const userquery = new mongoose.Schema({
   }
 });
 
-const Userquery = mongoose.model('home', userquery);
+const Userquery = mongoose.model('Queries', schema);
 exports.Userquery = Userquery;
