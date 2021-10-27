@@ -1,5 +1,78 @@
 FORMAT: 1A
 
-# Polls
+# Whatsapp-housing-api
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Connecting housing platforms by a single bot on Whatsapp to make it easier for users to find houses.
+
+### Add homes [POST]
+
++ Response 200 (application/json)
+[
+    {
+        house: {
+            type: String,
+        },
+        state: {
+            type: String,
+        },
+        city: {
+            type: String,
+        },
+        zip: {
+            type: String,
+        },
+        address: {
+            type: String,
+        },
+        owner: {
+            type: String,
+        },
+        phone: {
+            type: String,
+        }
+    }
+]
+
+### Get all the listed homes [GET]
+
++ Response 200 (application/json)
+
+[
+    {
+        house: {
+            type: String,
+        },
+        state: {
+            type: String,
+        },
+        city: {
+            type: String,
+        },
+        zip: {
+            type: String,
+        },
+        address: {
+            type: String,
+        },
+        owner: {
+            type: String,
+        },
+        phone: {
+            type: String,
+        }
+    }
+]
+
+### post user queries [POST]
+
++ Response 200 (application/json)
+[
+    {
+        username: {
+            type: String,
+        },
+        query: {
+            type: String,
+        }
+    }
+]
