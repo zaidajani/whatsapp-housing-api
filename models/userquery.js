@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true
-  },
   query: {
     type: String,
     required: true

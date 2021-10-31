@@ -21,9 +21,8 @@ async function addHomes(name, state, city, zip, address, owner, phone) {
   return home;
 }
 
-async function addquery(name, query, date) {
+async function addquery(query, date) {
   const userquery = new Userquery({
-    username: name,
     query: query
   });
   await userquery.save();
@@ -43,8 +42,8 @@ router.post('/home', async (req, res) => {
 });
 
 router.post('/userquery', async (req, res) => {
-  const {username, query} = req.body;
-  const request = await addquery(username, query);
+  const {query} = req.body;
+  const request = await addquery(query);
   res.send(request);
 });
 
